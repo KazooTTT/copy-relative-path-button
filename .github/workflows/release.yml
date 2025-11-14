@@ -28,10 +28,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
+      - name: Compile
         run: pnpm run compile
+
+      - name: Build VSIX
+        run: pnpm run build
 
       - name: Publish to VS Code Marketplace
         run: pnpm run publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Upload VSIX to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: '*.vsix'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

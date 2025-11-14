@@ -45,8 +45,8 @@
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
-    "build": "pnpm run compile",
     "compile": "tsc -p ./",
+    "build": "vsce package",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src",
