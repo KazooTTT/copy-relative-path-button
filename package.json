@@ -2,7 +2,7 @@
   "name": "copy-relative-path-button",
   "author": "kazoottt",
   "publisher": "kazoottt",
-  "icon": "https://pictures.kazoottt.top/2025/11/20251114-f22e750b04f21dea651c9c073f6751b3.png",
+  "icon": "icon.png",
   "displayName": "copy-relative-path-button",
   "description": "copy the relative path of the active file by click the button",
   "version": "0.0.1",
