@@ -5,7 +5,7 @@
   "icon": "icon.png",
   "displayName": "copy-relative-path-button",
   "description": "copy the relative path of the active file by click the button",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "repository": "https://github.com/kazoottt/copy-relative-path-button",
   "engines": {
     "vscode": "^1.60.0"
