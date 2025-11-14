@@ -3,8 +3,16 @@
   "author": "kazoottt",
   "publisher": "kazoottt",
   "icon": "icon.png",
-  "displayName": "copy-relative-path-button",
+  "displayName": "copy relative path button",
   "description": "copy the relative path of the active file by click the button",
+  "keywords": [
+    "vscode",
+    "extension",
+    "copy",
+    "path",
+    "relative-path",
+    "productivity"
+  ],
   "version": "0.0.1",
   "repository": "https://github.com/kazoottt/copy-relative-path-button",
   "engines": {

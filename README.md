@@ -1,6 +1,15 @@
 # Copy Relative Path Button
 
+[![VS Marketplace](https://img.shields.io/visual-studio-marketplace/v/kazoottt.copy-relative-path-button?label=VS%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=kazoottt.copy-relative-path-button)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/kazoottt.copy-relative-path-button)](https://marketplace.visualstudio.com/items?itemName=kazoottt.copy-relative-path-button)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/kazoottt.copy-relative-path-button)](https://marketplace.visualstudio.com/items?itemName=kazoottt.copy-relative-path-button)
+[![Latest VSIX](https://img.shields.io/github/v/release/KazooTTT/copy-relative-path-button?label=GitHub%20Release)](https://github.com/KazooTTT/copy-relative-path-button/releases/latest)
+
 A simple VS Code extension that adds a button to the editor title bar for copying the relative path of the active file to the clipboard.
+
+## Usage
+
+![Copy relative path demo](docs/assets/demo.gif)
 
 ## Features
 
@@ -16,15 +25,14 @@ A simple VS Code extension that adds a button to the editor title bar for copyin
 3. Click the button to copy the relative path
 4. The path is now in your clipboard, ready to paste
 
-## demo
-
-![](docs/assets/demo.gif)
-
 ## Installation
+
+- From Marketplace: [kazoottt.copy-relative-path-button](https://marketplace.visualstudio.com/items?itemName=kazoottt.copy-relative-path-button)
+- From GitHub Releases (VSIX): [Latest release](https://github.com/KazooTTT/copy-relative-path-button/releases/latest)
 
 ### From VSIX File
 
-1. Download the `.vsix` file
+1. Download the `.vsix` file from the [latest release](https://github.com/KazooTTT/copy-relative-path-button/releases/latest)
 2. Open VS Code
 3. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
 4. Type "Extensions: Install from VSIX"
