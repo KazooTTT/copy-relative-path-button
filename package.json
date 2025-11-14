@@ -1,0 +1,67 @@
+{
+  "name": "copy-relative-path-button",
+  "displayName": "copy-relative-path-button",
+  "description": "copy the relative path of the active file by click the button",
+  "version": "0.0.1",
+  "repository": "https://github.com/kazoottt/copy-relative-path-button",
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copy-relative-path-button.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "copy-relative-path-button.copyRelativePath",
+        "title": "Copy Relative Path",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "copy-relative-path-button.copyRelativePathSuccess",
+        "title": "Copy Relative Path (Success)",
+        "icon": "$(check)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "copy-relative-path-button.copyRelativePath",
+          "when": "editorTextFocus && !copyPathSuccess",
+          "group": "navigation"
+        },
+        {
+          "command": "copy-relative-path-button.copyRelativePathSuccess",
+          "when": "editorTextFocus && copyPathSuccess",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "build": "pnpm run build",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.106.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.46.3",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  },
+  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6"
+}
