@@ -13,7 +13,7 @@
     "relative-path",
     "productivity"
   ],
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": "https://github.com/kazoottt/copy-relative-path-button",
   "engines": {
     "vscode": "^1.60.0"
