@@ -15,15 +15,20 @@ A simple VS Code extension that adds a button to the editor title bar for copyin
 
 - **One-click path copying**: Click the copy button in the editor title bar to instantly copy the relative path of the currently opened file.
 - **Visual feedback**: After successful copying, the button icon changes to a checkmark for 3 seconds to confirm the action.
+- **Active tab aware**: The editor title button shows based on the active tab, not only when the text area has focus.
+- **Status bar button**: A status bar button is always available so you can copy even when focus is on the sidebar (e.g., Chat view).
 - **Workspace awareness**: Automatically detects if you're in a workspace and copies relative or absolute paths accordingly.
 - **No configuration needed**: Works out of the box with no additional settings required.
+- **Choose your mode quickly**: Use Alt/Option-click on the editor title button, a status bar QuickPick, or keybindings to copy either plain path or path with line:column on demand.
 
 ## How to Use
 
 1. Open any file in VS Code
-2. Look for the copy icon in the right corner of the editor title bar
-3. Click the button to copy the relative path
-4. The path is now in your clipboard, ready to paste
+2. Use one of the options below:
+   - Editor title button: click to copy the path; Alt/Option-click to copy `path:line:column`.
+   - Status bar: click `$(copy) Path` to open a QuickPick and choose between plain path or `path:line:column`.
+   - Commands/Keybindings: `Copy Relative Path` (`Cmd+Alt+C` on macOS / `Ctrl+Alt+C` on Windows/Linux) or `Copy Relative Path (with Line:Column)` (`Cmd+Alt+Shift+C` / `Ctrl+Alt+Shift+C`).
+3. The path is now in your clipboard, ready to paste
 
 ## Installation
 
@@ -62,6 +67,12 @@ pnpm run compile
 ### 0.0.1
 
 - Initial release with copy relative path functionality and visual feedback system
+
+### 0.0.4
+
+- Add second command to copy with `line:column`
+- Editor title button supports Alt/Option-click to copy with position
+- Status bar button shows QuickPick to choose mode
 
 ---
 
