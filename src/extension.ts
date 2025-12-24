@@ -24,19 +24,69 @@ export function activate(context: vscode.ExtensionContext) {
   // Always show so it's available even when focus is in the sidebar
   statusBarItem.show();
 
+  const getActiveUri = (): vscode.Uri | undefined => {
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+      return editor.document.uri;
+    }
+
+    const activeTab = vscode.window.tabGroups.activeTabGroup?.activeTab;
+    if (!activeTab) {
+      return undefined;
+    }
+
+    const input = activeTab.input as
+      | vscode.TabInputText
+      | vscode.TabInputTextDiff
+      | vscode.TabInputCustom
+      | vscode.TabInputNotebook
+      | vscode.TabInputWebview
+      | { uri?: vscode.Uri }
+      | { modified?: vscode.Uri; original?: vscode.Uri };
+
+    if (input instanceof vscode.TabInputText) {
+      return input.uri;
+    }
+
+    if (input instanceof vscode.TabInputTextDiff) {
+      return input.modified ?? input.original;
+    }
+
+    if (input instanceof vscode.TabInputCustom) {
+      return input.uri;
+    }
+
+    if (input instanceof vscode.TabInputNotebook) {
+      return input.uri;
+    }
+
+    if ("uri" in input && input.uri instanceof vscode.Uri) {
+      return input.uri;
+    }
+
+    if ("modified" in input && input.modified instanceof vscode.Uri) {
+      return input.modified;
+    }
+
+    if ("original" in input && input.original instanceof vscode.Uri) {
+      return input.original;
+    }
+
+    return undefined;
+  };
+
   // Command: Copy relative path only (no line/column)
   // Triggered by: editor title button click, Cmd+Alt+C (macOS) / Ctrl+Alt+C (Win/Linux)
   const copyDisposable = vscode.commands.registerCommand(
     "copy-relative-path-button.copyRelativePath",
     async () => {
-      const editor = vscode.window.activeTextEditor;
-      if (!editor) {
+      const uri = getActiveUri();
+      if (!uri) {
         vscode.window.showErrorMessage("No active editor");
         return;
       }
 
       // Get the file path relative to the workspace root
-      const uri = editor.document.uri;
       const path = vscode.workspace.asRelativePath(uri);
 
       // Copy to clipboard and show feedback
@@ -69,7 +119,9 @@ export function activate(context: vscode.ExtensionContext) {
     async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
-        vscode.window.showErrorMessage("No active editor");
+        vscode.window.showErrorMessage(
+          "No active text editor to read cursor position"
+        );
         return;
       }
 
