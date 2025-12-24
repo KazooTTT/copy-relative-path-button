@@ -75,6 +75,14 @@ export function activate(context: vscode.ExtensionContext) {
     return undefined;
   };
 
+  const formatPathForUri = (uri: vscode.Uri): string => {
+    if (!vscode.workspace.getWorkspaceFolder(uri)) {
+      return uri.fsPath;
+    }
+
+    return vscode.workspace.asRelativePath(uri);
+  };
+
   // Command: Copy relative path only (no line/column)
   // Triggered by: editor title button click, Cmd+Alt+C (macOS) / Ctrl+Alt+C (Win/Linux)
   const copyDisposable = vscode.commands.registerCommand(
@@ -87,7 +95,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       // Get the file path relative to the workspace root
-      const path = vscode.workspace.asRelativePath(uri);
+      const path = formatPathForUri(uri);
 
       // Copy to clipboard and show feedback
       await vscode.env.clipboard.writeText(path);
@@ -127,7 +135,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       // Get the file path and append cursor position (1-indexed for user readability)
       const uri = editor.document.uri;
-      let path = vscode.workspace.asRelativePath(uri);
+      let path = formatPathForUri(uri);
       const position = editor.selection.active;
       path = `${path}:${position.line + 1}:${position.character + 1}`;
 
